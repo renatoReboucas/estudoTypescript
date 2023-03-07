@@ -10,16 +10,12 @@ function result(price: number) {
 }
 result(add(10, 10));
 
-enum Role {
-  admin = 1,
-  read = 2,
-  backup = 3,
-}
-const user: {
+type Users = {
   fistName: string;
   age: number;
   lastName: string;
-} = {
+};
+const user: Users = {
   fistName: "Reanto",
   age: 24,
   lastName: "Rebouças",
@@ -36,4 +32,25 @@ if (itemInput === "string") {
   itemName = itemInput;
 }
 // O tipo 'unknown' não pode ser atribuído ao tipo 'string'
-itemName = itemInput;
+// itemName = itemInput;
+
+// function generateError(message: string, code: number): never {
+//   throw { message: message, errorCode: code };
+// }
+// generateError("the aplication crashed", 500);
+
+function input(input1: number | string, input2: number | string) {
+  let result;
+  if (typeof input1 === "number" && typeof input2 === "number") {
+    result = input1 + input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
+  return result;
+}
+
+const combinePrices = input(10, 20);
+console.log(combinePrices);
+
+const combineName = input("Apple", "Avocado");
+console.log(combineName);

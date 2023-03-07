@@ -28,7 +28,7 @@ tsc <arquivo.ts>
 - Any: poder ser acossiado a todos os tipos de dados.
 - [Unknown](#unknown): Desconhecido, ou seja pode ser qualquer coisa mas de uma forma termporaria.
 - [Tuple](#tuple): aceita numebers e strings.
-- Never:
+- [Never](#never): ele nunca retorna um valor para console, usado para gerar erros.
 - [Enum](#enum): lista de itens relacionados,ou seja mapeamento de duas informaçoes.
 
 ### Exemplo de array de dados
@@ -65,9 +65,11 @@ console.log(user)
 
 <a id="object"></a>
 
-- Objeto: No typescript ele identifica de maneria automática os types dos seus valores, mas é possivel especificarmos por ele como no exemplo a baixo:
+- Objeto
 
 ```typescript
+// No typescript ele identifica de maneria automática os types dos seus valores, mas é possivel especificarmos por ele como no exemplo a baixo
+
 const user: {
   fistName: string;
   age: number;
@@ -99,12 +101,22 @@ itemName = itemInput
 itemName = itemInput
 ```
 
+<a id="never"></a>
+
+- Never
+
+```typescript
+// nesse tipo de caso por padrão o ts passa tipo void por padrão, porem como não se trata disso devemos adicionar o tipo never manualmente
+function generateError(message: string, code: number): never  {
+  throw { message: message, errorCode: code };
+}
+generateError("the aplication crashed", 500);
+```
 
 ### Funçao `return`
 
 No typescript podemos definir alem do tipo dos parametros da função como tambem seu retorno para isso basta adcionar o : type logo em seguina o fechamento do parenteses.
-
-- ex:
+ex:
 
 ```typescript
 function add(num1: number, num2: number): number {
@@ -115,12 +127,52 @@ function add(num1: number, num2: number): number {
 ### Função `void`
 
 É uma função onde não temos um retorno, ou seja ela executa e não retorna nada.
-
-- ex:
+ex:
 
 ```typescript
 function result(price: number) {
   console.log("the result is " + price);
 }
 result(add(10, 10));
+```
+
+### Alias type
+
+É uma maneira de definir uma tipagem meio que global para no caso usuarios como no exemplo a baixo:
+
+```typescript
+type Users = {
+  fistName: string;
+  age: number;
+  lastName: string;
+}
+const user: Users = {
+  fistName: "Reanto",
+  age: 24,
+  lastName: "Rebouças",
+};
+```
+
+### Union
+
+Em um parametro ou variavel armazenar dois tipo sem o ts reclamar.
+ex:
+
+```typescript
+// usamos o | para declarar dois types que são aceitos nos parametros da função assim fazendo o union 
+function input(input1: number | string, input2: number | string) {
+  let result;
+  if (typeof input1 === "number" && typeof input2 === "number") {
+    result = input1 + input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
+  return result;
+}
+
+const combinePrices = input(10, 20);
+console.log(combinePrices);
+
+const combineName = input("Apple", "Avocado");
+console.log(combineName);
 ```
