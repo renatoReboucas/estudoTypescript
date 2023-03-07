@@ -1,5 +1,21 @@
 # Aprendizado typescript
 
+## Instalando typescript
+
+Basta executar o seguinte comando se o node ja estiver instalado na sua maquina: 
+
+```bash
+npm i -g typescript
+```
+
+## executar o compilador
+
+Para executar o compilador basta digitar no terminal o seguinte comando:
+
+```hash
+tsc <arquivo.ts>
+```
+
 ## Tipos de dados
 
 - Number: numero.
