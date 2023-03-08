@@ -10,17 +10,17 @@ function result(price: number) {
 }
 result(add(10, 10));
 
-type Users = {
-  fistName: string;
-  age: number;
-  lastName: string;
-};
-const user: Users = {
-  fistName: "Reanto",
-  age: 24,
-  lastName: "Rebouças",
-};
-console.log(user);
+// type Users = {
+//   fistName: string;
+//   age: number;
+//   lastName: string;
+// };
+// const user: Users = {
+//   fistName: "Reanto",
+//   age: 24,
+//   lastName: "Rebouças",
+// };
+// console.log(user);
 
 let itemInput: unknown;
 let itemName: string;
@@ -54,3 +54,30 @@ console.log(combinePrices);
 
 const combineName = input("Apple", "Avocado");
 console.log(combineName);
+
+let product: string | number;
+
+product = "isso é uma string";
+console.log("ex string:", product);
+
+product = 10;
+console.log("ex number:", product);
+
+type User = {
+  firstName: string;
+  age: number;
+};
+
+type JobRole = {
+  id: number;
+  role: string;
+};
+
+type employee = User & JobRole;
+
+const user1: employee = {
+  firstName: "John",
+  age: 20,
+  id: 221,
+  role: "eadmin",
+};

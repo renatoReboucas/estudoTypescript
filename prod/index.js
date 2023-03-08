@@ -42,3 +42,8 @@ const combinePrices = input(10, 20);
 console.log(combinePrices);
 const combineName = input("Apple", "Avocado");
 console.log(combineName);
+let product;
+product = "isso é uma string";
+console.log("ex string:", product);
+product = 10;
+console.log("ex number:", product);

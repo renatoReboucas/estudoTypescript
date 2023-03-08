@@ -176,3 +176,45 @@ console.log(combinePrices);
 const combineName = input("Apple", "Avocado");
 console.log(combineName);
 ```
+
+### Literal type
+
+Parecido com o `union` mas ele é usado na declaração de variaveis.
+
+```typescript
+let product: string | number;
+
+product = "isso é uma string";
+console.log("ex string:", product);
+
+product = 10;
+console.log("ex number:", product);
+```
+
+### Intersection
+
+É uma maneira de combinar dois objetos ou dois alias.
+
+```typescript
+type User = {
+  firstName: string;
+  age: number;
+};
+
+type JobRole = {
+  id: number;
+  role: string;
+};
+
+// o tyoe employee é usado para juntar os dois tipos ja criados anteriormente, de maneira que a const user1 use ele como seu tipo e nao reclame se colocarmos os valores dos dois tipos.
+type employee = User & JobRole;
+
+const user1: employee = {
+  firstName: "John",
+  age: 20,
+  id: 221,
+  role: "eadmin",
+};
+
+```
+
