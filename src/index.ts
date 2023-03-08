@@ -1,83 +1,48 @@
-function add(num1: number, num2: number): number {
-  return num1 + num2;
-}
+// // aula 5
 
-let res = add(5, 8);
-console.log(res);
+// class Users {
+//   // declarando as propriedades da classe
+//   name: string;
+//   // garante que o valor de balance seja somente alterado nesta classe
+//   private balance: number;
 
-function result(price: number) {
-  console.log("the result is " + price);
-}
-result(add(10, 10));
+//   // inicializando as propriedades da classe
+//   constructor(n: string, b: number) {
+//     this.name = n;
+//     this.balance = b;
+//   }
 
-// type Users = {
-//   fistName: string;
-//   age: number;
-//   lastName: string;
-// };
-// const user: Users = {
-//   fistName: "Reanto",
-//   age: 24,
-//   lastName: "Rebouças",
-// };
-// console.log(user);
-
-let itemInput: unknown;
-let itemName: string;
-itemInput = 10;
-itemInput = "produto x";
-
-// o itemName não pode aceitar o tipo unknow sem passar por uma verifição pois itemName só aceita tipo string e mesmo o itemInput ter cido atribuido com uma string ele ainda é do tipo unknow.
-if (itemInput === "string") {
-  itemName = itemInput;
-}
-// O tipo 'unknown' não pode ser atribuído ao tipo 'string'
-// itemName = itemInput;
-
-// function generateError(message: string, code: number): never {
-//   throw { message: message, errorCode: code };
+//   // metodo de adicnionar dinheiro
+//   addMoney(amount: number) {
+//     this.balance += amount;
+//   }
 // }
-// generateError("the aplication crashed", 500);
 
-function input(input1: number | string, input2: number | string) {
-  let result;
-  if (typeof input1 === "number" && typeof input2 === "number") {
-    result = input1 + input2;
-  } else {
-    result = input1.toString() + input2.toString();
-  }
-  return result;
+// // instancia a classe de usuarios
+// const user1 = new Users("Reanto", 10);
+// //usa o metodo criado
+// user1.addMoney(100);
+// const user2 = new Users("Marcos", 20);
+// user2.addMoney(30);
+// console.log(user1);
+// console.log(user2);
+
+interface Item {
+  name: string;
+  price: number;
+  // define uma funcao para retornar uma mensagem junto a interface
+  itemPurchesa(message: string): void;
 }
 
-const combinePrices = input(10, 20);
-console.log(combinePrices);
+let product1: Item;
 
-const combineName = input("Apple", "Avocado");
-console.log(combineName);
-
-let product: string | number;
-
-product = "isso é uma string";
-console.log("ex string:", product);
-
-product = 10;
-console.log("ex number:", product);
-
-type User = {
-  firstName: string;
-  age: number;
+product1 = {
+  name: "Apple",
+  price: 2,
+  // cria a funcao de como a mensagem sera exibida
+  itemPurchesa(message: string) {
+    console.log(`${message} ${this.name}`);
+  },
 };
 
-type JobRole = {
-  id: number;
-  role: string;
-};
-
-type employee = User & JobRole;
-
-const user1: employee = {
-  firstName: "John",
-  age: 20,
-  id: 221,
-  role: "eadmin",
-};
+product1.itemPurchesa("You just bougth a");
